@@ -11,6 +11,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import Divider from '@mui/material/Divider';
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
+import { Outlet } from '@mui/icons-material';
+// import { Outlet, useNavigate } from "react-router-dom";
+import HomePage from '../components/home/home'
+import Footer from '../components/footer/footer'
 
 
 const BasicPopover = () => {
@@ -28,9 +32,9 @@ const BasicPopover = () => {
     const id = open ? 'simple-popover' : undefined;
 
     return (
-        <div>
-            <Typography aria-describedby={id} variant="contained" onClick={handleClick}>
-                Open Popover
+        <div style={{ marginLeft: 5 }}>
+            <Typography aria-describedby={id} variant="contained" onMouseOver={handleClick} >
+                Women
             </Typography>
             <Popover
                 id={id}
@@ -89,7 +93,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function SearchAppBar() {
+const NavigationBar = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" style={{ backgroundColor: "#7f8c8d" }}>
@@ -132,5 +136,20 @@ export default function SearchAppBar() {
 
             </AppBar>
         </Box>
+    );
+}
+
+export default function Mainlayout() {
+    return (
+        <>
+            <NavigationBar />
+            <Box>
+                <HomePage />
+            </Box>
+            <Divider />
+            <Box>
+                <Footer />
+            </Box>
+        </>
     );
 }
