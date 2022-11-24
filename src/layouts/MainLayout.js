@@ -41,6 +41,7 @@ const MouseOverPopover = (props) => {
                 aria-haspopup="true"
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
+                style={{ color: "black", fontFamily: "inherit", }}
             >
                 {Title}
             </Typography>
@@ -62,7 +63,7 @@ const MouseOverPopover = (props) => {
                 onClose={handlePopoverClose}
                 disableRestoreFocus
             >
-                <Typography sx={{ p: 1 }}>I use Popover.</Typography>
+                <Typography sx={{ p: 1 }}>{content}</Typography>
             </Popover>
         </div>
     );
@@ -71,9 +72,9 @@ const MouseOverPopover = (props) => {
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.black, 0.15),
     '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
+        backgroundColor: alpha(theme.palette.common.black, 0.25),
     },
     marginLeft: 0,
     width: '100%',
@@ -91,6 +92,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -113,7 +115,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const NavigationBar = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" style={{ backgroundColor: "#7f8c8d" }}>
+            <AppBar position="static" style={{ backgroundColor: "white" }}>
                 <div>
                     <Toolbar>
                         {/* <IconButton
@@ -134,9 +136,11 @@ const NavigationBar = () => {
                         >
                             BLOOMINGDALE'S
                         </Typography>
-                        <Search>
+                        <Button variant="contained" style={{ color: "white", backgroundColor: "#2c3e50" }}>Log In</Button>
+                        <Search style={{ color: "black" }}>
+
                             <SearchIconWrapper>
-                                <SearchIcon />
+                                <SearchIcon style={{ color: "black" }} />
                             </SearchIconWrapper>
                             <StyledInputBase
                                 placeholder="Search…"
@@ -150,36 +154,47 @@ const NavigationBar = () => {
                 <div style={{ marginLeft: 25, marginRight: 25, display: "flex", justifyContent: 'space-between' }}>
                     <MouseOverPopover
                         Title={"WOMEN"}
+                        content="list of women"
                     />
                     <MouseOverPopover
                         Title={"SHOES"}
+                        content="list of women"
                     />
                     <MouseOverPopover
                         Title={"HANDBAGS"}
+                        content="list of women"
                     />
                     <MouseOverPopover
                         Title={"JEWELRY & ACCESSORIES"}
+                        content="lorum ipesm"
                     />
                     <MouseOverPopover
                         Title={"MEN"}
+                        content="list of women"
                     />
                     <MouseOverPopover
                         Title={"KIDS"}
+                        content="list of women"
                     />
                     <MouseOverPopover
                         Title={"HOME"}
+                        content="list of women"
                     />
                     <MouseOverPopover
                         Title={"SALE"}
+                        content="list of women"
                     />
                     <MouseOverPopover
                         Title={"DESIGNERS"}
+                        content="list of women"
                     />
                     <MouseOverPopover
                         Title={"EDITORIAL"}
+                        content="list of women"
                     />
                     <MouseOverPopover
                         Title={"GIFT"}
+                        content="list of women"
                     />
                 </div>
 
