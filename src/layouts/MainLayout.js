@@ -17,40 +17,57 @@ import HomePage from '../components/home/home'
 import Footer from '../components/footer/footer'
 
 
-const BasicPopover = () => {
+const MouseOverPopover = (props) => {
+    let {
+        Title,
+        content
+    } = props;
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => {
+    const handlePopoverOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClose = () => {
+    const handlePopoverClose = () => {
         setAnchorEl(null);
     };
 
     const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
 
     return (
-        <div style={{ marginLeft: 5 }}>
-            <Typography aria-describedby={id} variant="contained" onMouseOver={handleClick} >
-                Women
+        <div>
+            <Typography
+                aria-owns={open ? 'mouse-over-popover' : undefined}
+                aria-haspopup="true"
+                onMouseEnter={handlePopoverOpen}
+                onMouseLeave={handlePopoverClose}
+            >
+                {Title}
             </Typography>
             <Popover
-                id={id}
+                id="mouse-over-popover"
+                sx={{
+                    pointerEvents: 'none',
+                }}
                 open={open}
                 anchorEl={anchorEl}
-                onClose={handleClose}
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'left',
                 }}
+                transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                }}
+                onClose={handlePopoverClose}
+                disableRestoreFocus
             >
-                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                <Typography sx={{ p: 1 }}>I use Popover.</Typography>
             </Popover>
         </div>
     );
 }
+
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -113,9 +130,9 @@ const NavigationBar = () => {
                             noWrap
                             component="div"
                             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                            style={{ color: "black" }}
+                            style={{ color: "black", fontWeight: 'bold' }}
                         >
-                            Bloomingdale's
+                            BLOOMINGDALE'S
                         </Typography>
                         <Search>
                             <SearchIconWrapper>
@@ -130,8 +147,40 @@ const NavigationBar = () => {
 
                     </Toolbar>
                 </div>
-                <div>
-                    <BasicPopover />
+                <div style={{ marginLeft: 25, marginRight: 25, display: "flex", justifyContent: 'space-between' }}>
+                    <MouseOverPopover
+                        Title={"WOMEN"}
+                    />
+                    <MouseOverPopover
+                        Title={"SHOES"}
+                    />
+                    <MouseOverPopover
+                        Title={"HANDBAGS"}
+                    />
+                    <MouseOverPopover
+                        Title={"JEWELRY & ACCESSORIES"}
+                    />
+                    <MouseOverPopover
+                        Title={"MEN"}
+                    />
+                    <MouseOverPopover
+                        Title={"KIDS"}
+                    />
+                    <MouseOverPopover
+                        Title={"HOME"}
+                    />
+                    <MouseOverPopover
+                        Title={"SALE"}
+                    />
+                    <MouseOverPopover
+                        Title={"DESIGNERS"}
+                    />
+                    <MouseOverPopover
+                        Title={"EDITORIAL"}
+                    />
+                    <MouseOverPopover
+                        Title={"GIFT"}
+                    />
                 </div>
 
             </AppBar>
